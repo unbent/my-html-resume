@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Polan - Software Developer</title>
+    <style>
+        /* Print Styling */
+        /* @media print {
+            body {
+
+                margin: 0;
+                padding: 0.5in;
+                font-size: 10pt;
+            }
+            .container {
+                width: 100%;
+                padding: 0px;
+            }
+            .column {
+                background-color: white;
+                border-radius: 0px;
+                padding: 0px;
+                box-shadow: none;
+            }
+        } */
+        .page-break {
+            page-break-before: always;
+            display: block;
+        }
+
+        .spacer-skills {
+            height: 15px; /* Adjust this value to add the desired space */
+        }
+
+        .spacer {
+            height: 20px; /* Adjust this value to add the desired space */
+        }
+        
+        
+        /* General Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #847e87;
+            color: #222034;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Container for layout */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            width: 8.5in;
+            height: 11in;
+        }
+
+        /* Column Styling */
+        .column {
+            background-color: white;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        /* Header Styling */
+        .header {
+            text-align: center;
+        }
+
+        /* Grid Span Styling */
+        .single-span {
+            grid-column: span 1;
+        }
+
+        .double-span {
+            grid-column: span 2;
+        }
+
+        .full-span {
+            grid-column: span 3;
+        }
+
+        /* Sub-Container Styling */
+        .sub-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+        }
+
+        .sub-column {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* Styling for the right line in the first sub-column */
+        .sub-column.single-span {
+            border-right: 1px solid #9badb7; /* Apply a right border to the column */
+            padding-right: 10px; /* Optional: add some padding to avoid overlap */
+        }
+
+        /* Contact Info Container and Styling */
+        .contact-info-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            font-size: 12px;
+            gap: 5px;
+        }
+
+        .contact-info-column {
+            text-align: center;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            gap: 10px;
+        }
+
+        .contact-icon-container {
+            width: 18px;
+            height: 18px;
+        }
+
+        .job-title-icon-container {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* Job Title Container Styling */
+        .job-title-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .job-title {
+            margin-left: 5px;
+            margin-top: 10px;
+            margin-bottom: 12px;
+        }
+
+        .job-title-company {
+            margin-left: 5px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+
+        .job-title-duration {
+            margin-left: 5px;
+            margin-top: 0px;
+            margin-bottom: 5px;
+        }
+
+        /* SVG Icon Styling */
+        .svg-icon {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Divider Styling */
+        .thin-divider {
+            border: none;
+            border-top: 1px solid #9badb7;
+            margin: 10px 0;
+        }
+
+        /* Link Styling */
+        .no-style-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Subdued Text Styling */
+        .subdued-text {
+            color: #323c39;
+            opacity: 0.7;
+            font-weight: 300;
+            font-size: 15px;
+        }
+
+        /* Section Header Styling */
+        .section-header {
+            color: #3f3f74;
+            text-align: left;
+        }
+
+        /* Text Container Styling */
+        .text-container {
+            text-align: left;
+            color: #323c39;
+            font-size: 15px;
+        }
+
+        /* Hyphen Styling */
+        .hyphen {
+            font-size: 1.2em;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        /* List and List Item Styling */
+        ul {
+            list-style-type: disc;
+        }
+
+        li {
+            margin-bottom: 2px;
+        }
+
+        li::marker {
+            color: #3f3f74;
+        }
+
+        /* Skills Container Styling */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(1fr, 1fr);
+            gap: 10px;
+        }
+
+        .skills-container-row-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .skills-container-row-item {
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .footer {
+            margin: auto;
+            margin-top: 30px;
+            padding: 10px;
+            text-align: center;
+            font-style: italic;
+        }
+
+    </style>
+</head>
+<body>
+    <svg style="display: none;">
+        <defs>
+            <symbol id="location-icon" viewBox="-3 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.7685 23.0866C9.7296 23.1333 9.6866 23.1763 9.6399 23.2152C9.2154 23.5686 8.5849 23.511 8.2315 23.0866C2.74384 16.4959 0 11.6798 0 8.63811C0 3.86741 4.2293 0 9 0C13.7707 0 18 3.86741 18 8.63811C18 11.6798 15.2562 16.4959 9.7685 23.0866zM9 12C10.6569 12 12 10.6569 12 9C12 7.34315 10.6569 6 9 6C7.3431 6 6 7.34315 6 9C6 10.6569 7.3431 12 9 12z" fill="#222034"></path></g>
+            </symbol>
+            <symbol id="email-icon" viewBox="0 -3 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M23.4006 1.20046L13.1469 8.9765C12.4583 9.4585 11.5417 9.4585 10.8531 8.9765L0.599433 1.20046C1.14673 0.47153 2.0183 0 3 0H21C21.9817 0 22.8533 0.47153 23.4006 1.20046zM24 3.25413V15C24 16.6569 22.6569 18 21 18H3C1.34315 18 0 16.6569 0 15V3.25413L9.70615 10.615C11.0834 11.5791 12.9166 11.5791 14.2938 10.615L24 3.25413z" fill="#222034"></path></g>
+            </symbol>
+            <symbol id="phone-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.45708 16.5368C11.3361 20.4151 14.2636 22.2371 16.4427 23.0169C18.6722 23.8148 20.0767 23.5057 20.811 23.2582C21.2306 23.1167 21.5577 22.8313 21.7899 22.583C22.0347 22.3211 22.2539 22.013 22.4432 21.7107C22.8224 21.1051 23.1458 20.4189 23.3651 19.9135C23.7798 18.9575 23.3784 17.8994 22.5402 17.3965L18.499 14.9717C17.6889 14.4857 16.6519 14.6133 15.9839 15.2814L15.2301 16.0351C14.4557 15.6459 12.9391 14.7391 11.0947 12.8952C9.25078 11.0508 8.34403 9.53418 7.95479 8.75983L8.70855 8.00607C9.3766 7.33802 9.50426 6.30104 9.01818 5.49091L6.59345 1.44969C6.09057 0.61155 5.03239 0.210149 4.07645 0.624868C3.57103 0.84414 2.88486 1.16751 2.27925 1.54675C1.97693 1.73607 1.66882 1.95522 1.40695 2.20003C1.15862 2.43217 0.873222 2.75929 0.73177 3.17891C0.484235 3.91324 0.175153 5.31767 0.973014 7.54726C1.7528 9.72634 3.57481 12.6538 7.45307 16.5328L7.45708 16.5368Z" fill="#222034"></path></g>
+            </symbol>
+            <symbol id="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M22.2857 0H1.70893C0.766071 0 0 0.776786 0 1.73036V22.2696C0 23.2232 0.766071 24 1.70893 24H22.2857C23.2286 24 24 23.2232 24 22.2696V1.73036C24 0.776786 23.2286 0 22.2857 0ZM7.25357 20.5714H3.69643V9.11786H7.25893V20.5714H7.25357ZM5.475 7.55357C4.33393 7.55357 3.4125 6.62679 3.4125 5.49107C3.4125 4.35536 4.33393 3.42857 5.475 3.42857C6.61071 3.42857 7.5375 4.35536 7.5375 5.49107C7.5375 6.63214 6.61607 7.55357 5.475 7.55357ZM20.5875 20.5714H17.0304V15C17.0304 13.6714 17.0036 11.9625 15.1821 11.9625C13.3286 11.9625 13.0446 13.4089 13.0446 14.9036V20.5714H9.4875V9.11786H12.9V10.6821H12.9482C13.425 9.78214 14.5875 8.83393 16.3179 8.83393C19.9179 8.83393 20.5875 11.2071 20.5875 14.2929V20.5714Z" fill="#306082"></path></g>
+            </symbol>
+            <symbol id="usertesting-icon" viewBox="-37 0 330 330" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M51.3658459,0 L205.635737,0 C234.412589,0 257.04461,22.6320205 255.962773,50.413583 L255.962773,219.093537 C255.962773,246.831826 233.374026,269.463847 205.592464,269.463847 L171.66607,269.463847 L190.187111,329.094677 L100.740866,269.463847 L51.4091194,269.463847 C22.6322673,269.463847 6.14225215e-05,246.831826 6.14225215e-05,218.054974 L6.14225215e-05,50.4568565 C-0.043026715,22.6320205 22.5889938,0 51.3658459,0 Z M111.299591,185.12387 C106.063502,182.224548 101.865976,178.027022 98.7070132,172.488019 C95.5480504,166.949016 93.9902058,160.284903 93.9902058,152.538953 L93.9902058,62.6599727 C93.9902058,61.2752219 93.6872916,60.1933854 93.0381897,59.50101 C92.4323612,58.7653611 91.3937981,58.4191735 89.9225004,58.4191735 L66.9442922,58.4191735 C66.4250106,58.4191735 65.9057291,58.5057204 65.429721,58.7220877 C64.9537129,58.938455 64.5209783,59.2413692 64.2180641,59.6741038 C63.4824152,60.4962996 63.0929541,61.5781362 63.1362275,62.7032462 L63.1362275,152.192765 C63.1362275,166.516281 66.0788229,178.50303 71.9640138,188.239559 C77.8492046,197.932814 85.7249746,205.159482 95.6778708,209.919563 C105.587494,214.679644 116.6655,217.016411 128.868616,217.016411 C141.115006,217.016411 152.193012,214.679644 162.102635,210.049384 C172.012257,205.419123 179.888028,198.279002 185.773218,188.585747 C191.658409,178.892491 194.601005,166.862469 194.601005,152.495679 L194.601005,62.7465196 C194.601005,62.1839646 194.514458,61.6214096 194.29809,61.0588546 C194.081723,60.5395731 193.778809,60.0202915 193.389348,59.6308304 C192.567152,58.8086346 191.485315,58.3759 190.100565,58.3759 L168.204193,58.3759 C166.905989,58.3759 165.824152,58.7653611 165.04523,59.5875569 C164.223034,60.4097527 163.833573,61.4483158 163.833573,62.7465196 L163.833573,152.538953 C163.833573,159.765621 162.275729,166.213367 159.160039,171.795643 C156.04435,177.421193 151.846824,181.74854 146.524188,184.820955 C141.201553,187.893371 135.316362,189.407942 128.91189,189.407942 C122.377597,189.451216 116.535679,188.023192 111.299591,185.12387 Z" fill="#315CFD"> </path> </g> </g>
+            </symbol>
+            <symbol id="github-icon" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>github</title> <path d="M16 1.375c-8.282 0-14.996 6.714-14.996 14.996 0 6.585 4.245 12.18 10.148 14.195l0.106 0.031c0.75 0.141 1.025-0.322 1.025-0.721 0-0.356-0.012-1.3-0.019-2.549-4.171 0.905-5.051-2.012-5.051-2.012-0.288-0.925-0.878-1.685-1.653-2.184l-0.016-0.009c-1.358-0.93 0.105-0.911 0.105-0.911 0.987 0.139 1.814 0.718 2.289 1.53l0.008 0.015c0.554 0.995 1.6 1.657 2.801 1.657 0.576 0 1.116-0.152 1.582-0.419l-0.016 0.008c0.072-0.791 0.421-1.489 0.949-2.005l0.001-0.001c-3.33-0.375-6.831-1.665-6.831-7.41-0-0.027-0.001-0.058-0.001-0.089 0-1.521 0.587-2.905 1.547-3.938l-0.003 0.004c-0.203-0.542-0.321-1.168-0.321-1.821 0-0.777 0.166-1.516 0.465-2.182l-0.014 0.034s1.256-0.402 4.124 1.537c1.124-0.321 2.415-0.506 3.749-0.506s2.625 0.185 3.849 0.53l-0.1-0.024c2.849-1.939 4.105-1.537 4.105-1.537 0.285 0.642 0.451 1.39 0.451 2.177 0 0.642-0.11 1.258-0.313 1.83l0.012-0.038c0.953 1.032 1.538 2.416 1.538 3.937 0 0.031-0 0.061-0.001 0.091l0-0.005c0 5.761-3.505 7.029-6.842 7.398 0.632 0.647 1.022 1.532 1.022 2.509 0 0.093-0.004 0.186-0.011 0.278l0.001-0.012c0 2.007-0.019 3.619-0.019 4.106 0 0.394 0.262 0.862 1.031 0.712 6.028-2.029 10.292-7.629 10.292-14.226 0-8.272-6.706-14.977-14.977-14.977-0.006 0-0.013 0-0.019 0h0.001z"></path> </g>
+            </symbol>
+            <symbol id="emw-icon" xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 249 269">
+                <title>Email Bubble 2 </title>
+                <style>
+                    .s0 { fill: #306082 } 
+                    .s1 { fill: #ffffff } 
+                </style>
+                <g id="Email Bubble 2 ">
+                    <g id="&lt;Group&gt;">
+                        <path id="&lt;Path&gt;" class="s0" d="m224.2 268.4c-10.6 0-21-2-30.9-6-8.8-3.7-16.9-8.8-23.9-15.5-14.3 5.6-29.4 8.4-44.8 8.4-68.2 0-123.7-55.5-123.7-123.7 0-68.2 55.5-123.6 123.7-123.6 68.2 0 123.7 55.4 123.7 123.6 0 30.9-11.4 60.4-32.2 83.2 3.8 12.1 9.3 23.5 16.4 33.8 3.8 5.4 8.1 10.7 12.7 15.5l0.7 0.7-0.9 0.4c-3.9 1.6-11.4 3.2-20.8 3.2z"/>
+                        <path id="&lt;Compound Path&gt;" fill-rule="evenodd" class="s1" d="m212.5 36.7c23.5 23.5 36.4 54.7 36.4 87.9 0 30.9-11.3 60.5-32 83.4 3.7 11.9 9.2 23.1 16.2 33.2 3.7 5.4 8 10.7 12.6 15.5l1.4 1.4-1.8 0.7c-4 1.6-11.6 3.3-21.1 3.3-10.7 0-21.2-2.1-31.1-6.1-8.8-3.6-16.9-8.8-23.9-15.3-14.2 5.5-29.2 8.3-44.6 8.3-33.2 0-64.4-13-87.9-36.5-23.5-23.4-36.4-54.7-36.4-87.9 0-33.2 12.9-64.4 36.4-87.9 23.5-23.5 54.7-36.4 87.9-36.4 33.2 0 64.4 12.9 87.9 36.4zm-210.9 87.9c0 68 55.1 123 123 123 15.9 0 31-3 44.9-8.4 5.3 5 13.2 11.1 24.1 15.5 11.1 4.6 21.7 6 30.6 6 9.5 0 16.9-1.6 20.6-3.1-4.2-4.3-8.6-9.5-12.8-15.7-8.5-12.2-13.5-24.3-16.6-34.3 20-21.8 32.2-51 32.2-83 0-67.9-55.1-123-123-123-67.9 0-123 55.1-123 123z"/>
+                    </g>
+                    <path id="&lt;Path&gt;" class="s1" d="m199.5 89.5v-7c0-3.4-2.9-6.1-6.6-6.1h-136.1c-3.6 0-6.6 2.7-6.6 6.1v6l75.4 53.3z"/>
+                    <path id="&lt;Path&gt;" class="s1" d="m125.6 152.7l-75.4-53.3v70.4c0 3.4 3 6.1 6.6 6.1h136.1c3.7 0 6.6-2.7 6.6-6.1v-69.4z"/>
+                </g>
+            </symbol>
+        </defs>
+    </svg>
+
+    <div class="container">
+        <div class="column full-span">
+            <!-- Header Begins -->
+            <div class="sub-container">
+                <div></div>
+                <div class="sub-column header full-span">
+                    <h1 style="margin-bottom: 5px">Daniel Polan</h1>
+                    <h4 style="margin-bottom: 10px; margin-top: 5px; color: #3f3f74;">Full-Stack Developer</h4>
+                    <p class="subdued-text">This resume has been custom coded using HTML/CSS</p>
+                </div>
+            </div>
+            <div class="contact-info-container">
+                <div class="contact-info-column">
+                    <div class="contact-icon-container">
+                        <svg class="svg-icon">
+                            <use xlink:href="#phone-icon"></use>
+                        </svg>
+                    </div>
+                    <a href="tel:+16132904829" class="no-style-link">+1 (613) 290-4829</a>
+                </div>
+                <div class="contact-info-column">
+                    <div class="contact-icon-container">
+                        <svg class="svg-icon">
+                            <use xlink:href="#email-icon"></use>
+                        </svg>
+                    </div>
+                    <a href="mailto:daniel.s.polan@gmail.com" class="no-style-link">daniel.s.polan@gmail.com</a>
+                </div>
+                <div class="contact-info-column">
+                    <div class="contact-icon-container">
+                        <svg class="svg-icon">
+                            <use xlink:href="#location-icon"></use>
+                        </svg>
+                    </div>
+                    Ottawa Ontario Canada
+                </div>
+                <div class="contact-info-column">
+                    <div class="contact-icon-container">
+                        <svg class="svg-icon">
+                            <use xlink:href="#linkedin-icon"></use>
+                        </svg>
+                    </div>
+                    <a href="https://www.linkedin.com/in/dan-polan/" class="no-style-link" target="_blank">linkedin.com/in/dan-polan</a>
+                </div>
+                <div class="contact-info-column">
+                    <div class="contact-icon-container">
+                        <svg class="svg-icon">
+                            <use xlink:href="#github-icon"></use>
+                        </svg>
+                    </div>
+                    <a href="https://www.github.com/unbent" class="no-style-link" target="_blank">github.com/unbent</a>
+                </div>
+            </div>
+            <!-- Header Ends -->
+            <hr class="thin-divider">
+            <!-- Summary Begins -->
+            <div class="sub-container">
+                <div class="sub-column full-span">
+                    <h3 class="section-header">Summary</h3>
+                    <div class="text-container">
+                        <p>Passionate Full-Stack Software Engineer skilled in TypeScript, JavaScript, Angular, React, Node.js, and Ruby on Rails. I develop fast, secure features that enhance customer insights and improve platform experiences, working closely with product managers and designers.</p>
+                        <p>Dedicated to engineering best practices, I champion refactoring, TDD, CI/CD, pair programming, and code reviews. With experience across the stack, I specialize in state management and modern frameworks like React.js, Redux Toolkit, and Angular. Always eager for new challenges.</p>
+                        <p>Beyond coding, I love camping and woodworking. Game development is a lifelong passion—I am always creating games and pixel art.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Summary Ends -->
+            <hr class="thin-divider">
+            <div class="sub-container">
+                <!-- Skills/Education Section Begins -->
+                <div class="sub-column single-span">
+                    <!-- Education Section Begins -->
+                    <h3 class="section-header">Education</h3>
+                    <div class="text-container">
+                        <h4 style="margin-bottom: 5px;">Game Development</h4>
+                        <p style="margin-top: 1px; margin-bottom: 1px;">Algonquin College</p>
+                        <p style="margin-top: 1px; margin-bottom: 1px;">Ontario College Advanced Diploma</p>
+                        <h5 style="margin-top: 5px;">2017<span class="hyphen">-</span>2020</h5>
+
+                    </div>
+                    <!-- Education Section Ends -->
+                    <hr class="thin-divider">
+                    <!-- Skills Section Begins -->
+                    <h3 class="section-header">Skills</h3>
+                    <div class="skills-container">
+                        <div class="skills-container-row-container">
+                            <h4 class="skills-container-row-item single-span">
+                                Typescript
+                            </h4>
+                            <h4 class="skills-container-row-item single-span">
+                                Javascript
+                            </h4>
+                        </div>
+                        <div class="skills-container-row-container">
+                            <h4 class="skills-container-row-item single-span">
+                                Ruby
+                            </h4>
+                            <h4 class="skills-container-row-item single-span">
+                                Rails
+                            </h4>
+                        </div>
+                        <div class="skills-container-row-container">
+                            <h4 class="skills-container-row-item single-span">
+                                C++ / C#
+                            </h4>
+                            <h4 class="skills-container-row-item single-span">
+                                HTML / CSS
+                            </h4>
+                        </div>
+                        <div class="skills-container-row-container">
+                            <h4 class="skills-container-row-item single-span">
+                                React
+                            </h4>
+                            <h4 class="skills-container-row-item single-span">
+                                Redux
+                            </h4>
+                        </div>
+                        <div class="skills-container-row-container">
+                            <h4 class="skills-container-row-item single-span">
+                                REST
+                            </h4>
+                            <h4 class="skills-container-row-item single-span">
+                                Angular
+                            </h4>
+                        </div>
+                        <div class="skills-container-row-container">
+                            <h4 class="skills-container-row-item single-span">
+                                GraphQL
+                            </h4>
+                            <h4 class="skills-container-row-item single-span">
+                                Heroku
+                            </h4>
+                        </div>
+                        <div class="skills-container-row-container">
+                            <h4 class="skills-container-row-item single-span">
+                                Git
+                            </h4>
+                            <h4 class="skills-container-row-item single-span">
+                                Github Actions
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="page-break"></div>
+                    <div class="spacer-skills"></div>
+                    <h3 class="section-header">Skills</h3>
+                    <div class="skills-container">
+                        <div class="skills-container-row-container">
+                            <h4 class="skills-container-row-item single-span">
+                                YAML
+                            </h4>
+                            <h4 class="skills-container-row-item single-span">
+                                JSON
+                            </h4>
+                        </div>
+                        <div class="skills-container-row-container">
+                            <h4 class="skills-container-row-item single-span">
+                                NGRX
+                            </h4>
+                            <h4 class="skills-container-row-item single-span">
+                                RXJS
+                            </h4>
+                        </div>
+                        <div class="skills-container-row-container">
+                            <h4 class="skills-container-row-item single-span">
+                                Zustand
+                            </h4>
+                            <h4 class="skills-container-row-item single-span">
+                                Node.js
+                            </h4>
+                        </div>
+                        <div class="skills-container-row-container">
+                            <h4 class="skills-container-row-item single-span">
+                                SASS
+                            </h4>
+                            <h4 class="skills-container-row-item single-span">
+                                CI / CD
+                            </h4>
+                        </div>
+                        <div class="skills-container-row-container">
+                            <h4 class="skills-container-row-item single-span">
+                                Cypress
+                            </h4>
+                            <h4 class="skills-container-row-item single-span">
+                                Jest
+                            </h4>
+                        </div>
+                        <div class="skills-container-row-container">
+                            <h4 class="skills-container-row-item single-span">
+                                ChatGPT
+                            </h4>
+                            <h4 class="skills-container-row-item single-span">
+                                GitCopilot
+                            </h4>
+                        </div>
+                    </div>
+                    <!-- Skills Section Ends -->
+                </div>
+                <!-- Skills/Education Section Ends -->
+                <!-- Experience Section Begins -->
+                <div class="sub-column double-span">
+                    <h3 class="section-header">Experience</h3>
+                    <div class="text-container">
+                        <div class="job-title-container">
+                            <div class="job-title-icon-container">
+                                <svg class="svg-icon">
+                                    <use xlink:href="#usertesting-icon"></use>
+                                </svg>
+                            </div>
+                            <h3 class="job-title">Software Engineer</h3>
+                        </div>
+                        <h4 class="job-title">UserTesting</h4>
+                        <h5 class="job-title-duration">April 2022<span class="hyphen">-</span>October 2024 (2 years 5 months)</h5>
+                        <ul>
+                            <li>
+                                Created a comprehensive plan on Confluence for the Analytics Filters feature, improving workflows and accelerating development. The plan served as a single source of truth, enhancing team alignment and efficiency.
+                            </li>
+                            <li>
+                                Developed numerous front-end and back-end features using React and Ruby on Rails, emphasizing code clarity. Applied design patterns like the Strategy Pattern to ensure modular, maintainable, and easily readable code.
+                            </li>
+                            <li>
+                                Improved unit test coverage within the Analytics repo at UserTesting, increasing coverage from 30% to over 80% in three months. Wrote a Husky hook script to automate testing workflows, resulting in higher code quality and fewer production issues.
+                            </li>
+                            <li>
+                                Designed and implemented scalable REST APIs using Node.js and Ruby on Rails, and built corresponding front-end handlers to facilitate seamless data access for developers across the application.
+                            </li>
+                            <li>
+                                Collaborated closely with the design team to fast-track the integration of new ideas, speeding up the delivery of critical assets and designs, and unblocking multiple teams in the process.
+                            </li>
+                            <li>
+                                Regularly entrusted with breaking down complex features, taking full ownership and ensuring smooth cross-team communication to create actionable implementation plans.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="page-break"></div>
+                    <div class="spacer"></div>
+                    <div class="text-container">
+                        <div class="job-title-container">
+                            <div class="job-title-icon-container">
+                                <svg class="svg-icon">
+                                    <use xlink:href="#usertesting-icon"></use>
+                                </svg>
+                            </div>
+                            <h3 class="job-title">Associate Software Engineer</h3>
+                        </div>
+                        <h4 class="job-title-company">UserTesting</h4>
+                        <h5 class="job-title-duration">October 2021<span class="hyphen">-</span>April 2022 (6 Months)</h5>
+                        <ul>
+                            <li>
+                                Spearheaded a Global Navigation UI overhaul, boosting user experience and performance by 50%. Developed scalable, future-proof Angular components using UserTesting's asset toolkit to support long-term platform growth.
+                            </li>
+                            <li>
+                                Engineered a back-end search application in Golang, enabling users to access and filter critical test data efficiently, reducing search time by 30%.
+                            </li>
+                            <li>
+                                Resolved a two-year-old broken Slack integration by successfully integrating Slack's API and designing an intuitive UI, restoring seamless communication and user experience within the platform.
+                            </li>
+                            <li>
+                                Championed and implemented web accessibility best practices, leveraging Axe DevTools to resolve over a dozen accessibility issues, achieving full compliance across the platform.
+                            </li>
+                            <li>
+                                Led Jira-driven development efforts, contributing to code implementation and domain maintenance, enhancing system stability and ensuring reliable project delivery.
+                            </li>
+                            <li>
+                                Adapted seamlessly across back-end, front-end, and full-stack roles based on project needs, showcasing versatility and team collaboration.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text-container">
+                        <div class="job-title-container">
+                            <div class="job-title-icon-container">
+                                <svg class="svg-icon">
+                                    <use xlink:href="#emw-icon"></use>
+                                </svg>
+                            </div>
+                            <h3 class="job-title">Software Engineer</h3>
+                        </div>
+                        <h4 class="job-title-company">Email My Webhooks</h4>
+                        <h5 class="job-title-duration">July 2020<span class="hyphen">-</span>October 2021 (1 year 3 months)</h5>
+                        <ul>
+                            <li>
+                                Integrated Shopify API using REST and GraphQL requests to access merchant data, enabling unique, custom features that set the application apart from competitors in the Shopify ecosystem.
+                            </li>
+                            <li>
+                                Achieved over 1,000 active merchant installs, demonstrating high adoption, product reliability, and strong user demand.
+                            </li>
+                            <li>
+                                Developed comprehensive unit and integration test suites, ensuring smooth feature additions and optimizing performance for sustained application quality.
+                            </li>
+                            <li>
+                                Built responsive front-end interfaces using Shopify Polaris, ensuring the application’s UI aligned with Shopify's design standards, providing an enhanced user experience.
+                            </li>
+                            <li>
+                                Implemented continuous integration (CI) pipelines with GitHub Actions, automating testing and maintaining code quality through RuboCop checks to streamline development processes.
+                            </li>
+                            <li>
+                                View the project on the Shopify App Store: <br>
+                                <a href="https://apps.shopify.com/email-my-webhooks-1" class="no-style-link" target="_blank">https://apps.shopify.com/email-my-webhooks-1</a><br>
+                                <p class="subdued-text">Interested in learning more? I can give you a tour of the app and walk you through our team's approach to development.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Experience Section Ends -->
+            </div>
+            <hr class="thin-divider">
+            <div class="sub-container">
+                <div class="sub-column full-span">
+                    <p class="footer subdued-text">
+                        Thank you for reviewing my resume! If you have any questions or would like to schedule a call,  
+                        feel free to reach out via email at <strong>daniel.s.polan@gmail.com</strong>.  
+                        I look forward to connecting!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
